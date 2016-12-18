@@ -1,0 +1,9 @@
+Tornado server starting on port 5000
+get src file time 0.018s 
+orginal alg 0.251s 
+Detection took 0.221s for 300 object proposals
+(300, 84)
+(300, 21)
+draw time 1.728s for 300 object proposals
+jnb alg 2.698s 
+post file 3.673s 
