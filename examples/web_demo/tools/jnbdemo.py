@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*
 
 # --------------------------------------------------------
 # Faster R-CNN
@@ -19,6 +20,7 @@ from fast_rcnn.test import im_detect
 from fast_rcnn.nms_wrapper import nms
 from utils.timer import Timer
 import matplotlib.pyplot as plt
+import matplotlib as mplt
 import numpy as np
 import scipy.io as sio
 caffe_root = '/home/ubuntu/jnb/py-faster-rcnn/caffe-fast-rcnn/'  
@@ -29,12 +31,15 @@ import caffe
 import os, sys, cv2
 import argparse
 
+myfont = mplt.font_manager.FontProperties(fname='/usr/share/fonts/truetype/msyh.ttf')
+
 CLASSES = ('__background__',
-           'aeroplane', 'bicycle', 'bird', 'boat',
-           'bottle', 'bus', 'car', 'cat', 'chair',
-           'cow', 'diningtable', 'dog', 'horse',
-           'motorbike', 'person', 'pottedplant',
-           'sheep', 'sofa', 'train', 'tvmonitor')
+           u"飞机", u"自行车", u"小鸟", u"船",
+           u"瓶子", u"巴士", u"汽车", u"猫", u"椅子",
+           u"牛", u"餐桌", u"狗", u"马",
+           u"摩托车", u"人", u"盆栽",
+           u"羊", u"沙发", u"火车", u"显示器")
+
 
 NETS = {'vgg16': ('VGG16',
                   'VGG16_faster_rcnn_final.caffemodel'),
@@ -138,9 +143,10 @@ def demo(net, image_name):
                           edgecolor='red', linewidth=3.5)
             			)
             ax.text(bbox[0], bbox[1] - 2,
-                	'{:s} {:.3f}'.format(class_name, score),
+                	#'{:s} {:.3f}'.format(class_name, score),
+		class_name,
                 bbox=dict(facecolor='blue', alpha=0.5),
-                fontsize=14, color='white')
+                fontsize=14, color='white',fontproperties=myfont)
 
     #ax.set_title(('{} detections with '
     #              'p({} | box) >= {:.1f}').format(class_name, class_name,
